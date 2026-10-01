@@ -18,6 +18,12 @@ public:
     Piece* getPiece(int row, int col) const;
     bool isSquareOccupied(int row, int col) const;
     bool isPathClear(int startRow, int startCol, int endRow, int endCol) const;
-};
 
+
+
+public:
+    // ... existing functions ...
+    bool movePiece(int startRow, int startCol, int endRow, int endCol);
+    void undoMove(int startRow, int startCol, int endRow, int endCol, Piece* capturedPiece);
+};
 #endif
