@@ -27,3 +27,16 @@ std::vector<std::pair<int, int>> Bishop::getValidMoves(const Board& board) const
     }
     return moves;
 }
+
+void Board::undoMove(int startRow, int startCol, int endRow, int endCol, Piece* capturedPiece) {
+    Piece* movedPiece = grid[endRow][endCol];
+    
+    // Move the piece back to its starting square
+    grid[startRow][startCol] = movedPiece;
+    if (movedPiece) {
+        movedPiece->setPosition(startRow, startCol);
+    }
+    
+    // Restore whatever piece was captured (or nullptr if the square was empty)
+    grid[endRow][endCol] = capturedPiece; 
+}
